@@ -23,7 +23,7 @@ class Person(models.Model):
     gender = models.CharField(max_length = 1, choices = gender_options)
     dob = models.DateField(default=timezone.now())
     pincode = models.IntegerField(blank = True, null = True)
-    address = models.CharField(max_length = 300)
+    address = models.CharField(max_length = 300, blank = True, null = True)
     phoneNumber = models.CharField(max_length = 12)
     height = models.FloatField(blank = True, null = True)
     weight = models.FloatField(blank = True, null = True)
