@@ -43,13 +43,23 @@ class PrognosisDiseaseSerializer(serializers.ModelSerializer):
     diseaseName = serializers.CharField(max_length = 300)
     class Meta:
         model = Prognosis
-        exclude = ['disease', 'prescriptions', 'person', 'isActive', 'endTime']
+        exclude = ['disease', 'prescription', 'person', 'isActive', 'endTime']
+
 
 class PrognosisPrescriptionSerializer(serializers.ModelSerializer):
     prognosisID = serializers.IntegerField()
-
-    medicineName = serializers.CharField(max_length = 300)
+    medicineName = serializers.CharField(max_length = 300) 
+    
     class Meta:
         model = Prescription
         exclude = ['medicine', 'estimateEndTime']
+
+class PrescriptionDeleteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Prescription
+        fields = ['id']
         
+
+class AreaStatisticsSerializer(serializers.Serializer):
+    pincode = serializers.CharField(max_length = 30)
+

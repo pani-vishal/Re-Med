@@ -46,11 +46,11 @@ class Medicine(models.Model):
 
 class Prescription(models.Model):
     estimateEndTime = models.DateField(blank = True, null = True)
-    medicine = models.OneToOneField(Medicine, on_delete = models.CASCADE)
-    morning = models.IntegerField(default = 0)
-    afternoon = models.IntegerField(default = 0)
-    evening = models.IntegerField(default = 0)
-    night = models.IntegerField(default = 0)
+    medicine = models.ForeignKey(Medicine, on_delete = models.CASCADE)
+    morning = models.FloatField(default = 0.0)
+    afternoon = models.FloatField(default = 0.0)
+    evening = models.FloatField(default = 0.0)
+    night = models.FloatField(default = 0.0)
 
     def __str__(self):
         return self.medicine.name
