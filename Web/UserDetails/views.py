@@ -65,9 +65,9 @@ class PrognosisDiseaseView(APIView):
         serializer = PrognosisDiseaseSerializer(data = request.data)
         if serializer.is_valid():
             person = Person.objects.get(user = request.user)
+            disease = Disease.objects.get_or_create(name = serializer.validated_data['diseaseName'])
             disease = Disease.objects.get(name = serializer.validated_data['diseaseName'])
             Prognosis.objects.create(person = person, startTime = serializer.validated_data['startTime'], disease = disease)
-            #prognosis.save()
             return Response(serializer.data, status = status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
@@ -79,6 +79,7 @@ class PrognosisPrescriptionView(APIView):
     def post(self, request, format = 'json'):
         serializer = PrognosisPrescriptionSerializer(data = request.data)
         if serializer.is_valid():
+            medicine = Medicine.objects.get_or_create(name = serializer.validated_data['medicineName'])
             medicine = Medicine.objects.get(name = serializer.validated_data['medicineName'])
             prognosis = Prognosis.objects.get(id = serializer.validated_data['prognosisID'])
             prescription = Prescription.objects.create(medicine = medicine,
