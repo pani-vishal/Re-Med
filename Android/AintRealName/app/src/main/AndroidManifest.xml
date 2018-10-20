@@ -15,17 +15,16 @@
             android:name=".controller.SignInActivity"
             android:screenOrientation="portrait"
             android:theme="@style/LoginSignupTheme"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
-        <activity android:name=".controller.SplashActivity" >
+            android:windowSoftInputMode="adjustResize"></activity>
+        <activity android:name=".controller.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.HomeActivity"></activity>
+        <activity android:name=".controller.HomeActivity" />
+        <activity android:name=".controller.PrescriptionDetailActivity"></activity>
     </application>
 
 </manifest>

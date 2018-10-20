@@ -20,9 +20,10 @@ object Constants {
     const val PINCODE_KEY = "pincode"
 
 
-    val BASE_URL = "https://7a1cb54e.ngrok.io"
+    val BASE_URL = "https://3ae35bd0.ngrok.io"
 
     val SIGNUP_URL = BASE_URL + "/auth/registration/"
     val LOGIN_URL = BASE_URL + "/auth/login/"
     val USER_DETAILS_URL = BASE_URL + "/user_details/"
+    val DISEASE_URL = BASE_URL + "/prognosis_list/"
 }
