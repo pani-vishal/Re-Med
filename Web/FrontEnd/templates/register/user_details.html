@@ -42,7 +42,7 @@
 					<div class="collpase navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li>
-								<a href="{% url 'user_login' %}">
+								<a href="#">
 									<i class="material-icons">apps</i>Login
 								</a>
 							</li>
@@ -60,66 +60,78 @@
 						<h2 style="text-align:center; color:rgba(100, 100, 100, 0.8)">User Details</h2>
 						<form class="form" method="" action="login-page.html">
 
-							<div class="card-content">
-
-								<div class="input-group">
-									<span class="input-group-addon">
-										<i class="material-icons">face</i>
-									</span>
-									<input type="text" class="form-control" id="username" disabled="disabled">
-								</div>
-
-								<div class="input-group">
-									<span class="input-group-addon">
-										<i class="material-icons">face</i>
-									</span>
-									<input type="text" class="form-control" placeholder="Name..." id="name">
-								</div>
-
-								<div class="input-group">
-									<span class="input-group-addon">
-										<i class="material-icons">
-											school
-											</i>
-									</span>
-									<input type="text" placeholder="College..." class="form-control" id="college"/>
-                </div>
-                
-                <div class="input-group">
-									<span class="input-group-addon">
-										<i class="material-icons">phone</i>
-									</span>
-									<input type="text" placeholder="Phone..." class="form-control" id="phone"/>
-                </div>
-                
-                <div class="input-group">
-									<span class="input-group-addon">
-										<i class="material-icons">person</i>
-									</span>
-									<div class="col-xs-12">
-									<select class="selectpicker" data-style="form-control" data-size="7" id="gender">
-										<option id= "M" value="M">Male </option>
-										<option id = 'F' value="F">Female</option>
-										<option id = 'O' value="O">Other</option>
-									</select>
+								<div class="card-content">
+	
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">face</i>
+										</span>
+										<input type="text" class="form-control" id="username" disabled="disabled">
 									</div>
-                </div>
-                
-                <div class="input-group" data-provide = 'datepicker'>
+	
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">face</i>
+										</span>
+										<input type="text" class="form-control" placeholder="Name..." id="name">
+									</div>
+									
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">phone</i>
+										</span>
+										<input type="text" placeholder="Phone..." class="form-control" id="phone"/>
+									</div>
+									
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">person</i>
+										</span>
+										<div class="col-xs-12">
+										<select class="selectpicker" data-style="form-control" data-size="7" id="gender">
+											<option id= "M" value="M">Male </option>
+											<option id = 'F' value="F">Female</option>
+											<option id = 'O' value="O">Other</option>
+										</select>
+										</div>
+									</div>
+									
+									<div class="input-group" data-provide = 'datepicker'>
 										<span class="input-group-addon">
 											<i class="material-icons">calendar_today</i>
 										</span>
-										<input type="text" placeholder="Birthday..." class="form-control" id="birthday"/>
+										<input type="text" placeholder="D.O.B..." class="form-control" id="dob"/>
 									</div>
 
 									<div class="input-group">
 											<span class="input-group-addon">
 												<i class="material-icons">perm_identity</i>
 											</span>
-											<input type="text" placeholder="Facebook ID - www.facebook.com/..." class="form-control" id="fb-id"/>
-										</div>
+											<input type="text" placeholder="Height..." class="form-control" id="height"/>
 									</div>
 
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">perm_identity</i>
+										</span>
+										<input type="text" placeholder="Weight..." class="form-control" id="weight"/>
+									</div>
+
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">perm_identity</i>
+										</span>
+										<input type="text" placeholder="Blood Group..." class="form-control" id="bloodGroup"/>
+									</div>
+
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">perm_identity</i>
+										</span>
+										<input type="text" placeholder="Postal Code..." class="form-control" id="postalCode"/>
+									</div>	
+	
+								</div>
 							<div class="footer text-center">
 								<div class="btn btn-primary btn-simple btn-wd btn-lg login_form">Save</div>
 							</div>
@@ -157,39 +169,42 @@
   <script>
 
     var token = localStorage.getItem("token");
+    console.log(token);
     if(token == null){
       token = '';
     }
-    $.ajax({
-      url : "/user_detail/",
-      type : 'get',
-      beforeSend : function(request){
-        request.setRequestHeader("Authorization",
-          "Token " + token);
-      },
+    // $.ajax({
+    //   url : "/user_details/",
+    //   type : 'get',
+    //   beforeSend : function(request){
+    //     request.setRequestHeader("Authorization",
+    //       "Token " + token);
+    //   },
       
-      dataType : 'json',
-      success: function(data){
-        var username = data['username'];
-        $('#username').val(username);
-      },
-      error: function(MLHttpRequest, textStatus, errorThrown){
-        alert("Please log in again!");
-        window.location.href = "/user_login/";
-      },
-    });
+    //   dataType : 'json',
+    //   success: function(data){
+    //     var username = data['username'];
+    //     $('#username').val(username);
+    //   },
+    //   error: function(MLHttpRequest, textStatus, errorThrown){
+    //     alert("Please log in again!");
+    //     window.location.href = "/user_login/";
+    //   },
+    // });
   
   
     $(".login_form").on("click", function(e) {
       var name = $("#name").val();
-      var college = $("#college").val();
       var phone = $('#phone').val();
       var gender = $('#gender').val();
-      var birthday = $("#birthday").datepicker("option", "dateFormat", "yy-mm-dd" ).val();
-			var fb_id = $("#fb-id").val();
+      var dob = $("#dob").datepicker("option", "dateFormat", "yyyy-mm-dd" ).val();
+			var height = $("#height").val();
+      var weight = $('#weight').val();
+      var postalCode = $('#postalCode').val();
+      var bloodGroup = $('#bloodGroup').val();
   
       $.ajax({
-        url : "/api/regular_user/",
+        url : "/user_details/",
         type : 'post',
         beforeSend : function(request){
           request.setRequestHeader("Authorization",
@@ -197,15 +212,17 @@
         },
         data : {
           "name": name, 
-          "college": college, 
-          "phone" : phone,
+          "phoneNumber" : phone,
           "gender" : gender,
-          "birthday" : birthday,
-					"fb_id":fb_id
+          "dob" : dob,
+				  "height" : height,
+          "weight" : weight,
+          "pincode" : postalCode,
+          "bloodGroup" : bloodGroup,
         },
         dataType : 'json',
         success: function(data){
-          window.location.href = "/ca/";
+          window.location.href = "http://localhost:5500/template.html/";
         },
         error: function(MLHttpRequest, textStatus, errorThrown){
           if(phone.length != 10){
@@ -221,7 +238,7 @@
 							}
 						}
 					}
-					window.location.href = "/set_user_details/";
+					window.location.href = "/auth_forms/user_details/";
         }
       });
     });
