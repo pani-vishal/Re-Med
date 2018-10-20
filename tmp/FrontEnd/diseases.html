@@ -32,7 +32,7 @@
         </div>
         <div class="sidebar-wrapper">
           <ul class="nav">
-            <li class="nav-item active  ">
+            <li class="nav-item">
               <a class="nav-link" href="./template.html">
                 <i class="material-icons">dashboard</i>
                 <p>Dashboard</p>
@@ -45,7 +45,7 @@
               </a>
             </li>
 
-            <li class="nav-item ">
+            <li class="nav-item active">
                 <a class="nav-link" href="./diseases.html">
                   <i class="material-icons">list_alt</i>
                   <p>Diseases</p>
@@ -119,20 +119,124 @@
       <div class="content">
         <div class="container-fluid">
           <!-- your content here -->
-          <div class="card" style="width: 70%; position: relative; left: 50%; transform: translateX(-50%);">
-            <img class="img" src="./img/panda.jpg" alt="Card image cap" style="width: 20%; position: relative; left: 50%; transform: translate(-50%, -20%); border-radius: 50%">
-            <div class="card-body">
-                <h1 class="card-title text-center">Hello, Vishal!</h1>
-                <hr style="border: 0; 
-                          width: 70%;
-                          height: 0;
-                          border-top: 1px solid rgba(0, 0, 0, 0.1);
-                          border-bottom: 1px solid rgba(255, 255, 255, 0.3);">
-
-              <ul class="list-group list-group-flush">
-              </ul>
-            </div>
+          <div class="row">
+              <div class="card card-nav-tabs text-center" style="width: 70%; position: relative; left: 50%; transform: translateX(-50%);">
+                  <div class="card-header card-header-primary">
+                    Dengue
+                  </div>
+                  <div class="card-body">
+                    <h4 class="card-title">Prognosis</h4>
+                    <p class="card-text">Lorem ipsum afbfakn  flashlka lklfs </p>
+                    <a href="#" class="btn btn-primary">Details</a>
+                  </div>
+                  <div class="card-footer text-muted">
+                    19/10/2018 - Present
+                  </div>
+              </div>
           </div>
+
+          <div class="row">
+              <div class="card card-nav-tabs text-center" style="width: 70%; position: relative; left: 50%; transform: translateX(-50%);">
+                  <div class="card-header card-header-primary">
+                    Dengue
+                  </div>
+                  <div class="card-body">
+                    <h4 class="card-title">Prognosis</h4>
+                    <p class="card-text">Lorem ipsum afbfakn  flashlka lklfs </p>
+                    <a href="#" class="btn btn-primary">Details</a>
+                  </div>
+                  <div class="card-footer text-muted">
+                    19/10/2017 - 19/10/2018
+                  </div>
+              </div>
+          </div>
+
+          <a href="#" data-toggle="modal" data-target="#exampleModal"><i class="material-icons" style="color: red; font-size: 64px; position: relative; left: 92%">add_circle</i></a>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Prognosis</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="row">
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Disease Name</label>
+                              <input type="email" class="form-control">
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                  <label class="bmd-label-floating">Start Date</label>
+                                  <input type="text" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                  <label class="bmd-label-floating">End Date</label>
+                                  <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">City</label>
+                              <input type="text" class="form-control">
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Country</label>
+                              <input type="text" class="form-control">
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Postal Code</label>
+                              <input type="text" class="form-control">
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                <label class="bmd-label-floating">Blood Group</label>
+                                <input type="text" class="form-control">
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                <label class="bmd-label-floating">Height</label>
+                                <input type="text" class="form-control">
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                <label class="bmd-label-floating">Weight</label>
+                                <input type="text" class="form-control">
+                              </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal">Update Profile</button>
+                        <button type="button" class="btn btn-secondary pull-right" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+                  </div>
         </div>
       </div>
       <footer class="footer">
