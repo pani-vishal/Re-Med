@@ -27,8 +27,10 @@ class SplashActivity : AppCompatActivity() {
         Log.v("Token", userToken)
         if(userToken == Constants.TOKEN_DEFAULT){
             startActivity(Intent(this, SignInActivity::class.java))
+            finish()
         }else{
             val user = AppDB.getInstance(this).getUserDetails()
+
             UserDetails.name = user.name
             UserDetails.birthDate = user.birthDate
             UserDetails.bloodGroup = user.bloodGroup
@@ -39,6 +41,7 @@ class SplashActivity : AppCompatActivity() {
             UserDetails.pincode = user.pincode
 
             startActivity(Intent(this, HomeActivity::class.java))
+            finish()
         }
     }
 
