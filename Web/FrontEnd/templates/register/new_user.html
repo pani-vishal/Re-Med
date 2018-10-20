@@ -36,13 +36,13 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="http://effe.org.in">Effervescence</a>
+						<a class="navbar-brand" href="#">Re:Med</a>
 					</div>
 		
 					<div class="collpase navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li>
-								<a href="{% url 'user_login' %}">
+								<a href="#">
 									<i class="material-icons">apps</i> Login
 								</a>
 							</li>
@@ -52,7 +52,9 @@
 				</div>
 			</nav>
 
-	<div class="page-header header-filter" style="background-image: url({% static 'login/css/background3.jpg' %}); background-size: cover; background-position: top center;">
+
+	{% load static %}
+	<div class="page-header header-filter" style="background-image: url({% static 'login/css/background3.png' %}); background-size: cover; background-position: top center;">
 		<div class="container">
 			<div class="row">
 				
@@ -63,36 +65,36 @@
 									<div class="col-md-5 col-md-offset-1">
 										<div class="info info-horizontal" style="padding:0 0 20px;">
 											<div class="icon icon-rose">
-												<i class="material-icons">star</i>
+												<i class="material-icons">assignment</i>
 											</div>
 											<div class="description">
-												<h4 class="info-title">Pronite Passes</h4>
+												<h4 class="info-title">Digitized Prescriptions</h4>
 												<p class="description">
-													Get a chance to win pronite passes and witness the greatest extravaganza of all time.
+													Access all your medical prescriptions at one place!
 												</p>
 											</div>
 										</div>
 		
 										<div class="info info-horizontal" style="padding:0 0 20px;">
 											<div class="icon icon-primary">
-												<i class="material-icons">group</i>
+												<i class="material-icons">warning</i>
 											</div>
 											<div class="description">
-												<h4 class="info-title">Internship Opportunity</h4>
+												<h4 class="info-title">Outbreak Detection</h4>
 												<p class="description">
-													Grab a chance to do internship in top companies.
+													Know about disease outbreaks as soon as they happen.
 												</p>
 											</div>
 										</div>
 		
 										<div class="info info-horizontal" style="padding:0 0 20px;">
 											<div class="icon icon-info">
-												<i class="material-icons">card_giftcard</i>
+												<i class="material-icons">accessible</i>
 											</div>
 											<div class="description">
-												<h4 class="info-title">Zebronics Goodies</h4>
+												<h4 class="info-title">S.O.S.</h4>
 												<p class="description">
-													Win some exciting Zebronics goodies.
+													Contact your close ones immedietely.
 												</p>
 											</div>
 										</div>
@@ -143,94 +145,10 @@
 													<div class="btn btn-primary btn-simple btn-wd btn-lg login_form">Register</div>
 												</div>
 											</form>		
-										<form class="form" method="" action="signup-page.html">
-											<div class="card-content">
-												<div class="input-group">
-													<span class="input-group-addon">
-														<i class="material-icons">face</i>
-													</span>
-													<input type="text" class="form-control" placeholder="First Name...">
-												</div>
-		
-												<div class="input-group">
-													<span class="input-group-addon">
-														<i class="material-icons">email</i>
-													</span>
-													<input type="text" class="form-control" placeholder="Email...">
-												</div>
-		
-												<div class="input-group">
-													<span class="input-group-addon">
-														<i class="material-icons">lock_outline</i>
-													</span>
-													<input type="password" placeholder="Password..." class="form-control" />
-												</div>
-		
-												<!-- If you want to add a checkbox to this form, uncomment this code -->
-		
-												<div class="checkbox">
-													<label>
-														<input type="checkbox" name="optionsCheckboxes" checked>
-														I agree to the <a href="signup-page.html#something">terms and conditions</a>.
-													</label>
-												</div>
-											</div>
-											<div class="footer text-center">
-												<a href="signup-page.html#pablo" class="btn btn-primary btn-round login_form">Get Started</a>
-											</div>
-										</form> 
+								
 									</div>
 								</div>
 							</div>
-		
-					<div class="card card-signup">
-						<h2 style="text-align:center">Signup</h2>
-						<form class="form" method="" action="login-page.html">
-
-							<div class="card-content">
-
-								<div class="input-group">
-									<span class="input-group-addon">
-										<i class="material-icons">face</i>
-									</span>
-									<input type="text" class="form-control" placeholder="Username..." id="username">
-								</div>
-
-								<div class="input-group">
-									<span class="input-group-addon">
-										<i class="material-icons">email</i>
-									</span>
-									<input type="text" class="form-control" placeholder="Email..." id="email">
-								</div>
-
-								<div class="input-group">
-									<span class="input-group-addon">
-										<i class="material-icons">lock_outline</i>
-									</span>
-									<input type="password" placeholder="Password..." class="form-control" id="password1"/>
-                </div>
-                
-                <div class="input-group">
-									<span class="input-group-addon">
-										<i class="material-icons">lock_outline</i>
-									</span>
-									<input type="password" placeholder=" Confirm Password..." class="form-control" id="password2"/>
-								</div>
-
-								<!-- If you want to add a checkbox to this form, uncomment this code
-
-								<div class="checkbox">
-									<label>
-										<input type="checkbox" name="optionsCheckboxes" checked>
-										Subscribe to newsletter
-									</label>
-								</div> -->
-							</div>
-							<div class="footer text-center">
-								<div class="btn btn-primary btn-simple btn-wd btn-lg login_form">Register</div>
-							</div>
-						</form>
-					</div> 
 				</div>
 			</div>
 		</div>
@@ -238,7 +156,7 @@
 				<div class="container">
 	
 					<div class="copyright col-md-12" style="text-align:center">
-						&copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="https://effe.org.in" target="_blank">Effervescence</a>
+						&copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="https://effe.org.in" target="_blank">Re:Med</a>
 					</div>
 				</div>
 			</footer>

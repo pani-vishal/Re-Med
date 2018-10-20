@@ -30,6 +30,8 @@ ALLOWED_HOSTS = ['*']
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -48,6 +50,7 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'rest_auth',
     'UserDetails',
+    'FrontEnd',
 ]
 
 SITE_ID = 1
