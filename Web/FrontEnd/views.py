@@ -35,3 +35,6 @@ def user(request):
 
 def diseases(request):
     return render(request, 'diseases.html', {})	
+
+def stats(request):
+    return render(request, 'stats.html', {})	
