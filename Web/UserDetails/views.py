@@ -1,12 +1,18 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
-from .serializers import UserDetailsSerializer
+from .serializers import *
 from rest_framework.views import APIView
 from django.contrib.auth.decorators import login_required
 from rest_framework.response import Response
-from rest_framework import status
-from .models import Person
+from rest_framework import (
+    status, 
+    viewsets
+)
+
+from .models import Person, Disease, Medicine, Prognosis, Prescription
 from rest_framework.authtoken.models import Token
+from rest_framework.generics import ListAPIView
+
 
 
 class RegularUserAPI(APIView):
@@ -24,7 +30,6 @@ class RegularUserAPI(APIView):
                 return Response(json, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
     
 
     def get(self, request, format = 'json'):
@@ -32,15 +37,98 @@ class RegularUserAPI(APIView):
         serializer = UserDetailsSerializer(person)
         return Response(serializer.data, status = status.HTTP_200_OK)
 
-    	
 
     def put(self, request, format = 'json'):
-    	person = Person.objects.get(user = request.user)
-    	serializer = Person(person, data = request.data, partial = True)
-    	if serializer.is_valid():
-    		serializer.save()
-    		return Response(serializer.data, status = status.HTTP_200_OK)
-    	return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        person = Person.objects.get(user = request.user)
+        print(person)
+        serializer = UserDetailsSerializer(person, data = request.data, partial = True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+class DiseaseAPIView(ListAPIView):
+    serializer_class = DiseaseSerializer
+    queryset = Disease.objects.all()
 
+
+class MedicineAPIView(ListAPIView):
+    serializer_class = MedicineSerializer
+    queryset = Medicine.objects.all()
+
+
+class PrognosisDiseaseView(APIView):
+    serializer_class = PrognosisDiseaseSerializer
+
+    def post(self, request, format = 'json'):
+        serializer = PrognosisDiseaseSerializer(data = request.data)
+        if serializer.is_valid():
+            person = Person.objects.get(user = request.user)
+            try:
+                diseaseQuery = Disease.objects.filter(name = serializer.validated_data['diseaseName'])
+            except diseaseQuery.DoesNotExist:
+                Disease.objects.create(name = serializer.validated_data['diseaseName'])
+            disease = Disease.objects.get(name = serializer.validated_data['diseaseName'])
+            Prognosis.objects.create(person = person, startTime = serializer.validated_data['startTime'], disease = disease)
+            #prognosis.save()
+            return Response(serializer.data, status = status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+
+
+class PrognosisPrescriptionView(APIView):
+    serializer_class = PrognosisPrescriptionSerializer
+
+    def post(self, request, format = 'json'):
+        serializer = PrognosisPrescriptionSerializer(data = request.data)
+        if serializer.is_valid():
+            medicine = Medicine.objects.get(name = serializer.validated_data['medicineName'])
+            prognosis = Prognosis.objects.get(id = serializer.validated_data['prognosisID'])
+            prescription = Prescription.objects.create(medicine = medicine)
+            prescription.save()
+            prognosis.prescriptions.add(prescription)
+            prognosis.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class PrognosisDetailView(ListAPIView):
+    serializer_class = PrognosisDetailSerializer
+    
+    def get_queryset(self):
+        person = Person.objects.get(user = self.request.user)
+        return Prognosis.objects.filter(person = person)
+
+    def list(self, request):
+        queryset = self.get_queryset();
+        serializer = PrognosisDetailSerializer(queryset, many = True)
+        new_list = list()
+        for data in serializer.data:
+            new_dict = dict()
+            disease = Disease.objects.get(id = data['disease'])
+            diseaseName = disease.name
+            diseaseDescription = disease.description
+            new_dict.update(data)
+            temp_dict = {
+                'diseaseName' : diseaseName,
+                'diseaseDescription' : diseaseDescription,
+            }
+            new_temp_list = list()
+            for pid in data['prescription']:
+                new_temp_dict = dict()
+                prescription = Prescription.objects.get(id = pid)
+                new_temp_dict = {
+                    'id' : pid,
+                    'medicineName' : prescription.medicine.name,
+                }
+                new_temp_list.append(new_temp_dict)
+            new_dict['prescription'] = new_temp_list
+            new_dict.update(temp_dict)
+            new_list.append(new_dict)
+            
+            
+        # print(new_list)
+            
+        return Response(new_list)
+    
