@@ -66,7 +66,7 @@ class Prognosis(models.Model):
     startTime = models.DateField(default = timezone.now())
     endTime = models.DateField(blank = True, null = True)
     disease = models.ForeignKey(Disease, on_delete = models.CASCADE)
-    prescription = models.ManyToManyField(Prescription)
+    prescription = models.ManyToManyField(Prescription, blank = True)
     person = models.ForeignKey(Person, on_delete = models.CASCADE)
     isActive = models.BooleanField(default = True)
     isVerified = models.BooleanField(default = False)

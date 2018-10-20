@@ -184,17 +184,18 @@
         },
         dataType : 'json',
         success: function(data){
+          console.log(data);
           var token = data["key"];
 		  localStorage.setItem("token", token);
 		  //alert('Confirmation mail has been sent to your email id');
-          window.location.href = "/admin/";
+          window.location.href = "/auth_forms/user_details/";
         },
         error: function(MLHttpRequest, textStatus, errorThrown){
 		var check = false;
         for(key in MLHttpRequest.responseJSON){
 			if(String(MLHttpRequest.responseJSON[key]) == "A user with that username already exists."){
 				check = true;
-				window.location.href = "/new_user/";
+				window.location.href = "/auth_forms/new_user/";
 			}
 		  }
 		  if(check = false){

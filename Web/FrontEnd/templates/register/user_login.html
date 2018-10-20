@@ -132,7 +132,7 @@
 			  var password = $("#password").val();
 
 			  $.ajax({
-				url : "/api/login/",
+				url : "/auth/login/",
 				type : 'post',
 				data : {
 				  "username" : username,
@@ -142,7 +142,7 @@
 				success: function(data){
 				  var token = data["key"];
 				  localStorage.setItem("token", token);
-				  window.location.href = "/ca/";
+				  window.location.href = "/auth_forms/login/";
 				},
 				error: function(MLHttpRequest, textStatus, errorThrown){
 				  for(key in MLHttpRequest.responseJSON){
