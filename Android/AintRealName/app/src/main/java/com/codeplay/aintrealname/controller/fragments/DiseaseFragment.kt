@@ -19,25 +19,35 @@ import android.view.*
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONArrayRequestListener
+import com.codeplay.aintrealname.controller.AddPrognosisActivity
 import com.codeplay.aintrealname.models.Perscription
 import com.codeplay.aintrealname.utilities.Constants
+import com.sergiocasero.revealfab.RevealFAB
 import org.json.JSONArray
 import org.json.JSONObject
 
 
-class DiseaseFragment : Fragment() {
 
+
+class DiseaseFragment : Fragment() {
+    companion object {
+        var isRefreshForceful = false
+    }
     private var allDiseases = ArrayList<Disease>()
     lateinit var adapter: DiseaseAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_disease, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val intent = Intent(activity!!, AddPrognosisActivity::class.java)
+        reveal_fab.intent = intent
+        reveal_fab.setOnClickListener { button, _ ->
+            button!!.startActivityWithAnimation()
+        }
 
         adapter = DiseaseAdapter(activity!!){a, b ->
             val intent = Intent(activity!!, PrescriptionDetailActivity::class.java)
@@ -56,16 +66,20 @@ class DiseaseFragment : Fragment() {
         diseaseRecyclerView.adapter = adapter
         diseaseRecyclerView.layoutManager = LinearLayoutManager(context!!, LinearLayoutManager.VERTICAL, false)
 
-        getDiseases()
-
     }
+
+
+
+
 
 
     private fun getDiseases() {
         allDiseases.clear()
         allDiseases.addAll(AppDB.getInstance(context!!).getAllDiseases())
 
-        if(allDiseases.isEmpty()) {
+        if(allDiseases.isEmpty() || isRefreshForceful) {
+
+            isRefreshForceful = false
             //Toast.makeText(context!!, "I am empty", Toast.LENGTH_SHORT).show()
             AndroidNetworking.get(Constants.DISEASE_URL)
                     .addHeaders(Constants.AUTHORIZATION_KEY, Constants.TOKEN_STRING + Constants.token)
@@ -87,7 +101,7 @@ class DiseaseFragment : Fragment() {
 
                                 val prescription = obj.optJSONArray("prescription")
                                 for(j in 0 until prescription.length()){
-                                    val obj2 = prescription[i] as JSONObject
+                                    val obj2 = prescription[j] as JSONObject
 
                                     AppDB.getInstance(context!!).putPrescription(Perscription(
                                             obj2.optInt("id"),
@@ -116,10 +130,14 @@ class DiseaseFragment : Fragment() {
                     })
 
         } else{
-
             adapter.swapList(allDiseases)
-
-
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        reveal_fab.onResume()
+
+        getDiseases()
     }
 }

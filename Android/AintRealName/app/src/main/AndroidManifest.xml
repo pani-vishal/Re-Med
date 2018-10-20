@@ -15,7 +15,7 @@
             android:name=".controller.SignInActivity"
             android:screenOrientation="portrait"
             android:theme="@style/LoginSignupTheme"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".controller.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +24,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".controller.HomeActivity" />
-        <activity android:name=".controller.PrescriptionDetailActivity"></activity>
+        <activity android:name=".controller.PrescriptionDetailActivity" />
+        <activity android:name=".controller.AddPrognosisActivity" />
+        <activity android:name=".controller.MedicationActivity"></activity>
     </application>
 
 </manifest>
