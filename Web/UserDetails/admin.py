@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Person, Medicine, Disease, Prognosis
+from .models import *
 
 # Register your models here.
 @admin.register(Person)
@@ -27,3 +27,5 @@ class PrognosisAdmin(admin.ModelAdmin):
         'person',
         'disease'
     ]
+
+admin.site.register(Prescription)

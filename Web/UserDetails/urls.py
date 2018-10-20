@@ -8,5 +8,6 @@ urlpatterns = [
     path('disease_list/', views.DiseaseAPIView.as_view(), name = 'disease_list'),
     path('medicine_list/', views.MedicineAPIView.as_view(), name = 'medicine_list'),
     path('prognosis_disease_add/', views.PrognosisDiseaseView.as_view(), name = 'prognosis_disease_add'),
-    path('prognosis_medicine_add/', views.)
+    path('prognosis_medicine_add/', views.PrognosisPrescriptionView.as_view(), name = 'prognosis_medicine_add'),
+    path('prognosis_list/', views.PrognosisDetailView.as_view(), name = 'prognosis_list'),
 ]

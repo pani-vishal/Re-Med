@@ -39,7 +39,7 @@ class Medicine(models.Model):
         ('L', 'Liquid'),
         ('O', 'Other')
     )
-    medicineType = models.CharField(max_length = 1, choices = medicine_type_options)
+    medicineType = models.CharField(max_length = 1, choices = medicine_type_options, default = 'T')
 
     def __str__(self):
         return self.name
@@ -47,7 +47,13 @@ class Medicine(models.Model):
 class Prescription(models.Model):
     estimateEndTime = models.DateField(blank = True, null = True)
     medicine = models.OneToOneField(Medicine, on_delete = models.CASCADE)
+    morning = models.IntegerField(default = 0)
+    afternoon = models.IntegerField(default = 0)
+    evening = models.IntegerField(default = 0)
+    night = models.IntegerField(default = 0)
 
+    def __str__(self):
+        return self.medicine.name
 
 class Disease(models.Model):
     name = models.CharField(max_length = 300)
@@ -59,7 +65,8 @@ class Disease(models.Model):
 class Prognosis(models.Model):
     startTime = models.DateField(default = timezone.now())
     endTime = models.DateField(blank = True, null = True)
-    disease = models.OneToOneField(Disease, on_delete = models.CASCADE)
-    medicines = models.ManyToManyField(Medicine)
+    disease = models.ForeignKey(Disease, on_delete = models.CASCADE)
+    prescription = models.ManyToManyField(Prescription)
     person = models.ForeignKey(Person, on_delete = models.CASCADE)
     isActive = models.BooleanField(default = True)
+    isVerified = models.BooleanField(default = False)
