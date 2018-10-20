@@ -1,0 +1,189 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+
+	<meta charset="utf-8" />
+	<!-- <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" href="../assets/img/favicon.png"> -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Login</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+	<!-- Canonical SEO -->
+	<link rel="canonical" href="http://www.creative-tim.com/product/material-kit-pro" />
+
+	<!--     Fonts and icons     -->
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+	{% load static %}
+
+    <link href="{% static 'material/css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'material/css/material.css' %}" rel="stylesheet"/>
+</head>
+
+<body class="login-page">
+	<nav class="navbar navbar-primary navbar-transparent navbar-absolute">
+    	<div class="container">
+        	<!-- Brand and toggle get grouped for better mobile display -->
+        	<div class="navbar-header">
+        		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
+            		<span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="http://effe.org.in">Effervescence'18</a>
+        	</div>
+
+        	<div class="collpase navbar-collapse">
+        		<ul class="nav navbar-nav navbar-right">
+    				<li>
+    					<a href="{% url 'new_user' %}">
+    						<i class="material-icons">apps</i> Register
+    					</a>
+    				</li>
+
+        		</ul>
+        	</div>
+    	</div>
+    </nav>
+
+	<div class="page-header header-filter" style="background-image: url({% static 'login/css/background3.jpg' %}); background-size: cover; background-position: top center;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+					<div class="card card-signup">
+						<h2 style="text-align:center; color:rgba(100, 100, 100, 0.8)">Login</h2>
+						<form class="form" method="" action="login-page.html">
+							<!-- <div class="header header-primary text-center">
+								<h4 class="card-title">Log in</h4>
+								<div class="social-line">
+									<a href="login-page.html#pablo" class="btn btn-just-icon btn-simple">
+										<i class="fa fa-facebook-square"></i>
+									</a>
+									<a href="login-page.html#pablo" class="btn btn-just-icon btn-simple">
+										<i class="fa fa-twitter"></i>
+									</a>
+									<a href="login-page.html#pablo" class="btn btn-just-icon btn-simple">
+										<i class="fa fa-google-plus"></i>
+									</a>
+								</div>
+							</div> -->
+							<div class="card-content">
+
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="material-icons">face</i>
+									</span>
+									<input type="text" class="form-control" placeholder="Username" id="username">
+								</div>
+
+								<!-- <div class="input-group">
+									<span class="input-group-addon">
+										<i class="material-icons">email</i>
+									</span>
+									<input type="text" class="form-control" placeholder="Email...">
+								</div> -->
+
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="material-icons">lock_outline</i>
+									</span>
+									<input type="password" placeholder="Password..." class="form-control" id="password"/>
+								</div>
+
+								<!-- If you want to add a checkbox to this form, uncomment this code
+
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" name="optionsCheckboxes" checked>
+										Subscribe to newsletter
+									</label>
+								</div> -->
+							</div>
+							<div class="footer text-center">
+								<div class="btn btn-primary btn-simple btn-wd btn-lg login_form">Login</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="footer" style="position:absolute; bottom:0%; width: 100vw;">
+	        <div class="container">
+
+	            <div class="copyright col-md-12" style="text-align:center">
+	                &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="https://effe.org.in" target="_blank">Effervescence</a>
+	            </div>
+	        </div>
+	    </footer>
+
+	</div>
+
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.9/dist/sweetalert2.all.min.js"></script>
+	<script>
+			$(".login_form").on("click", function(e) {
+			  var username = $("#username").val();
+			  var password = $("#password").val();
+
+			  $.ajax({
+				url : "/api/login/",
+				type : 'post',
+				data : {
+				  "username" : username,
+				  "password" : password
+				},
+				dataType : 'json',
+				success: function(data){
+				  var token = data["key"];
+				  localStorage.setItem("token", token);
+				  window.location.href = "/ca/";
+				},
+				error: function(MLHttpRequest, textStatus, errorThrown){
+				  for(key in MLHttpRequest.responseJSON){
+					swal(String(MLHttpRequest.responseJSON[key]));
+				  }
+				}
+			  });
+			}); 
+		  </script>
+
+</body>
+	<!--   Core JS Files   -->
+	{% load static %}
+
+	
+	<script src="{% static 'material/js/bootstrap.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'material/js/material.min.js' %}"></script>
+	<!--    Plugin for Date Time Picker and Full Calendar Plugin   -->
+	<script src="{% static 'material/js/moment.min.js' %}"></script>
+
+	<!--	Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/   -->
+	<script src="{% static 'material/js/nouislider.min.js' %}" type="text/javascript"></script>
+
+	<!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker   -->
+	<script src="{% static 'material/js/bootstrap-datetimepicker.js' %}" type="text/javascript"></script>
+
+	<!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select   -->
+	<script src="{% static 'material/js/bootstrap-selectpicker.js' %}" type="text/javascript"></script>
+
+	<!--	Plugin for Tags, full documentation here: http://xoxco.com/projects/code/tagsinput/   -->
+	<script src="{% static 'material/js/bootstrap-tagsinput.js' %}"></script>
+
+	<!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput   -->
+	<script src="{% static 'material/js/jasny-bootstrap.min.js' %}"></script>
+	
+	<!--    Plugin For Google Maps   -->
+	<script  type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFPQibxeDaLIUHsC6_KqDdFaUdhrbhZ3M"></script>
+
+	<!--    Plugin for 3D images animation effect, full documentation here: https://github.com/drewwilson/atvImg    -->
+	<script src="{% static 'material/js/atv-img-animation.js' %}" type="text/javascript"></script>
+
+	<!--    Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc    -->
+	<script src="{% static 'material/js/material-kit.min.js' %}" type="text/javascript"></script>
+</html>

@@ -1,0 +1,31 @@
+h1{
+	color: rgb(91, 91, 91);
+	size: 100px;
+	text-align: center;
+	font-weight: 600;
+}
+
+h4{
+	color: green;
+}
+
+
+.entry{
+	border: solid 4px black;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+a{
+	color: red;
+}
+
+a:hover{
+	text-decoration: none;
+	font-weight: 600;
+	color: red;
+}
+
+.delete-link{
+	text-align: right;
+}
