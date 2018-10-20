@@ -127,43 +127,43 @@
                   </a>
                 </div>
                 <div class="card-body">
-                  <h2 class="card-title">Vishal Pani</h2>
+                  <h2 class="card-title" id="name">Vishal Pani</h2>
                   <ul class="list-group list-group-flush card-description">
                       <table class="table">
                           <thead>
                               <tr>
                                   <th>Gender</th>
-                                  <th>Male</th>
+                                  <th id="gender">Male</th>
                               </tr>
 
                               <tr>
                                   <th>D.O.B.</th>
-                                  <th>1998-06-05</th>
+                                  <th id="dob">1998-06-05</th>
                               </tr>
 
                               <tr>
                                   <th>Pin Code</th>
-                                  <th>201301</th>
+                                  <th id="pincode">201301</th>
                               </tr>
 
                               <tr>
                                   <th>Phone Number</th>
-                                  <th>9999999999</th>
+                                  <th id="phoneNumber">9999999999</th>
                               </tr>
 
                               <tr>
                                   <th>Height</th>
-                                  <th>180</th>
+                                  <th id="height">180</th>
                               </tr>
 
                               <tr>
                                   <th>Weight</th>
-                                  <th>70</th>
+                                  <th id="weight">70</th>
                               </tr>
 
                               <tr>
                                   <th>Blood Group</th>
-                                  <th>B+</th>
+                                  <th id="bloodGroup">B+</th>
                               </tr>
                           </thead>
                       </table>
@@ -186,14 +186,14 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                       <div class="form-group">
-                                        <label class="bmd-label-floating">Email address</label>
-                                        <input type="email" class="form-control">
+                                        <label class="bmd-label-floating">Name</label>
+                                        <input type="text" class="form-control" id="name1">
                                       </div>
 									</div>
                                     <div class="col-md-6">
 										<div class="form-group">
 										  <label class="bmd-label-floating">Phone Number</label>
-										  <input type="email" class="form-control">
+										  <input type="text" class="form-control" id="phoneNumber1">
 										</div>
 									  </div>
                                   </div>
@@ -201,69 +201,48 @@
                                   <div class="row">
                                       <div class="col-md-4">
                                           <div class="form-group">
-                                            <label class="bmd-label-floating">Name</label>
-                                            <input type="text" class="form-control">
+                                            <label class="bmd-label-floating">Gender</label>
+                                            <input type="text" class="form-control" id="gender1">
                                           </div>
                                       </div>
 
                                       <div class="col-md-4">
                                           <div class="form-group">
-                                            <label class="bmd-label-floating">Gender</label>
-                                            <input type="text" class="form-control">
+                                            <label class="bmd-label-floating">D.O.B.</label>
+                                            <input type="text" class="form-control" id="dob1">
                                           </div>
 									  </div>
 									  
                                       <div class="col-md-4">
 										<div class="form-group">
-										  <label class="bmd-label-floating">Date of Birth</label>
-										  <input type="text" class="form-control">
+										  <label class="bmd-label-floating">Pin Code</label>
+										  <input type="text" class="form-control" id="pincode1">
 										</div>
 									</div>
                                   </div>
                                   <div class="row">
                                     <div class="col-md-4">
                                       <div class="form-group">
-                                        <label class="bmd-label-floating">City</label>
-                                        <input type="text" class="form-control">
+                                        <label class="bmd-label-floating">Height</label>
+                                        <input type="text" class="form-control" id="height1">
                                       </div>
                                     </div>
                                     <div class="col-md-4">
                                       <div class="form-group">
-                                        <label class="bmd-label-floating">Country</label>
-                                        <input type="text" class="form-control">
+                                        <label class="bmd-label-floating">Weight</label>
+                                        <input type="text" class="form-control" id="weight1">
                                       </div>
                                     </div>
-                                    <div class="col-md-4">
-                                      <div class="form-group">
-                                        <label class="bmd-label-floating">Postal Code</label>
-                                        <input type="text" class="form-control">
-                                      </div>
-                                    </div>
-                                  </div>
 
-                                  <div class="row">
-                                      <div class="col-md-4">
-                                        <div class="form-group">
-                                          <label class="bmd-label-floating">Blood Group</label>
-                                          <input type="text" class="form-control">
-                                        </div>
-                                      </div>
-                                      <div class="col-md-4">
-                                        <div class="form-group">
-                                          <label class="bmd-label-floating">Height</label>
-                                          <input type="text" class="form-control">
-                                        </div>
-                                      </div>
-                                      <div class="col-md-4">
-                                        <div class="form-group">
-                                          <label class="bmd-label-floating">Weight</label>
-                                          <input type="text" class="form-control">
-                                        </div>
-                                      </div>
+									<div class="col-md-4">
+											<div class="form-group">
+											  <label class="bmd-label-floating">Blood Group</label>
+											  <input type="text" class="form-control" id="bloodGroup1">
+											</div>
+										  </div>
                                   </div>
-
                                   <br>
-                                  <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal">Update Profile</button>
+                                  <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal" id="updateProfile">Update Profile</button>
                                   <button type="button" class="btn btn-secondary pull-right" data-dismiss="modal">Close</button>
                             </div>
                           </div>
@@ -312,7 +291,119 @@
         </div>
       </footer>
     </div>
-	</div>
+  </div>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.9/dist/sweetalert2.all.min.js"></script>
+  <script>
+
+      var token = localStorage.getItem("token");
+      console.log(token);
+      if(token == null){
+        token = '';
+      }    
+        $.ajax({
+          url : "/user_details/",
+          type : 'get',
+          beforeSend : function(request){
+            request.setRequestHeader("Authorization",
+              "Token " + token);
+          },
+          dataType : 'json',
+          success: function(data){
+            console.log(data['phoneNumber']);
+            $('#name').text(data['name']);
+            $('#phoneNumber').text(data['phoneNumber']);
+            $('#gender').text(data['gender']);
+            $('#dob').text(data['dob']);
+            $('#height').text(data['height']);
+            $('#weight').text(data['weight']);
+            $('#pincode').text(data['pincode']);
+			$('#bloodGroup').text(data['bloodGroup']);
+			
+			$('#name1').val(data['name']);
+            $('#phoneNumber1').val(data['phoneNumber']);
+            $('#gender1').val(data['gender']);
+            $('#dob1').val(data['dob']);
+            $('#height1').val(data['height']);
+            $('#weight1').val(data['weight']);
+            $('#pincode1').val(data['pincode']);
+            $('#bloodGroup1').val(data['bloodGroup']);
+            // window.location.href = "auth_forms/user/";
+          },
+          error: function(MLHttpRequest, textStatus, errorThrown){
+            if(phone.length != 10){
+              alert("Enter valid phone number");
+            }
+            else{
+              for(key in MLHttpRequest.responseJSON){
+                if(String(MLHttpRequest.responseJSON[key]) == "This value does not match the required pattern."){
+                  swal("Please enter correct FB link");
+                }
+                else{
+                  swal(String(MLHttpRequest.responseJSON[key]));
+                }
+              }
+            }
+            window.location.href = "/auth_forms/user_details/";
+          }
+        });
+	
+		
+
+		$("#updateProfile").on("click", function(e) {
+      var name = $("#name1").val();
+      var phone = $('#phone1').val();
+      var gender = $('#gender1').val();
+      var dob = $("#dob1").val();
+		var height = $("#height1").val();
+      var weight = $('#weight1').val();
+      var postalCode = $('#postalCode1').val();
+      var bloodGroup = $('#bloodGroup1').val();
+  
+      $.ajax({
+        url : "/user_details/",
+        type : 'put',
+        beforeSend : function(request){
+          request.setRequestHeader("Authorization",
+            "Token " + token);
+        },
+        data : {
+          "name": name, 
+          "phoneNumber" : phone,
+          "gender" : gender,
+          "dob" : dob,
+			"height" : height,
+          "weight" : weight,
+          "pincode" : postalCode,
+          "bloodGroup" : bloodGroup,
+        },
+        dataType : 'json',
+        success: function(data){
+			console.log("Then Done");
+          window.location.href = "/auth_forms/user/";
+        },
+        error: function(MLHttpRequest, textStatus, errorThrown){
+          if(phone.length != 10){
+						alert("Enter valid phone number");
+					}
+					else{
+						for(key in MLHttpRequest.responseJSON){
+							if(String(MLHttpRequest.responseJSON[key]) == "This value does not match the required pattern."){
+								swal("Please enter correct FB link");
+							}
+							else{
+								swal(String(MLHttpRequest.responseJSON[key]));
+							}
+						}
+					}
+					window.location.href = "/auth_forms/user_details/";
+        }
+      });
+    });
+    
+      
+    </script>  
 
 	<!--   Core JS Files   -->
 	<script src="{% static 'homepage/assets/js/core/jquery.min.js' %}" type="text/javascript"></script>
@@ -320,7 +411,7 @@
 	<script src="{% static 'homepage/assets/js/core/bootstrap-material-design.min.js' %}" type="text/javascript"></script>
 	<script src="{% static 'homepage/assets/js/plugins/perfect-scrollbar.jquery.min.js' %}"></script>
 	<!--  Google Maps Plugin    -->
-	<script src="{% static 'https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE' %}"></script>
+	<!-- <script src="{% static 'https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE' %}"></script> -->
 	<!-- Chartist JS -->
 	<script src="{% static 'homepage/assets/js/plugins/chartist.min.js' %}"></script>
 	<!--  Notifications Plugin    -->
