@@ -10,9 +10,6 @@
     </style>
 
     <style name="LoginSignupTheme" parent="AppTheme.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">#512da8</item>
         <!--<item name="android:windowBackground">@drawable/background3</item>-->
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:fitsSystemWindows">true</item>
@@ -24,4 +21,10 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowContentTransitions">true</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
 </resources>

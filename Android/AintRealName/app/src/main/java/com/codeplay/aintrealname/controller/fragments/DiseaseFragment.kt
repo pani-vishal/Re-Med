@@ -1,6 +1,7 @@
 package com.codeplay.aintrealname.controller.fragments
 
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -9,7 +10,7 @@ import android.support.v4.util.Pair
 
 import com.codeplay.aintrealname.R
 import com.codeplay.aintrealname.adapters.DiseaseAdapter
-import com.codeplay.aintrealname.controller.PrescriptionDetailActivity
+import com.codeplay.aintrealname.controller.activities.PrescriptionDetailActivity
 import com.codeplay.aintrealname.models.Disease
 import com.codeplay.aintrealname.utilities.AppDB
 import kotlinx.android.synthetic.main.fragment_disease.*
@@ -19,10 +20,10 @@ import android.view.*
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONArrayRequestListener
-import com.codeplay.aintrealname.controller.AddPrognosisActivity
+import com.codeplay.aintrealname.controller.activities.AddPrognosisActivity
+import com.codeplay.aintrealname.controller.interfaces.OnFragmentInteractionListener
 import com.codeplay.aintrealname.models.Perscription
 import com.codeplay.aintrealname.utilities.Constants
-import com.sergiocasero.revealfab.RevealFAB
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -35,8 +36,13 @@ class DiseaseFragment : Fragment() {
     }
     private var allDiseases = ArrayList<Disease>()
     lateinit var adapter: DiseaseAdapter
+    private var listener: OnFragmentInteractionListener? = null
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        if (listener != null) {
+            listener!!.setTitleTo("All Your Prognosis", 2)
+        }
         return inflater.inflate(R.layout.fragment_disease, container, false)
     }
 
@@ -69,7 +75,19 @@ class DiseaseFragment : Fragment() {
     }
 
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is OnFragmentInteractionListener) {
+            listener = context
+        } else {
+            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
+        }
+    }
 
+    override fun onDetach() {
+        super.onDetach()
+        listener = null
+    }
 
 
 
@@ -118,7 +136,7 @@ class DiseaseFragment : Fragment() {
 
                             AppDB.getInstance(context!!).putAllDiseases(allDiseases)
 
-
+                            adapter.clear()
                             adapter.swapList(allDiseases)
 
                         }

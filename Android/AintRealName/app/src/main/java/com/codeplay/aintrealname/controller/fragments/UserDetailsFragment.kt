@@ -18,7 +18,7 @@ import android.widget.Toast
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
-import com.codeplay.aintrealname.controller.SplashActivity
+import com.codeplay.aintrealname.controller.activities.SplashActivity
 import com.codeplay.aintrealname.models.User
 import com.codeplay.aintrealname.utilities.AppDB
 import com.codeplay.aintrealname.utilities.Constants
@@ -86,12 +86,15 @@ class UserDetailsFragment : Fragment() {
                     override fun onResponse(response: JSONObject) {
                         progressDialog.dismiss()
 
+                        Log.e("Error", "$name $mobileNo $pincode $dobString")
                         AppDB.getInstance(mContext).putUserDetails(
                                 User(name, mobileNo, pincode, getSelectedGender(), dobString, height, weight, bloodGroup)
                         )
-                        activity?.finish()
+
                         Toast.makeText(context, "Details saved successfully", Toast.LENGTH_LONG).show()
                         startActivity(Intent(context, SplashActivity::class.java))
+
+                        activity?.finish()
                     }
                     override fun onError(error: ANError) {
                         if (error.errorCode != 0) {

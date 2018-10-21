@@ -1,4 +1,4 @@
-package com.codeplay.aintrealname.controller
+package com.codeplay.aintrealname.controller.activities
 
 import android.app.DatePickerDialog
 import android.support.v7.app.AppCompatActivity
@@ -11,11 +11,8 @@ import com.codeplay.aintrealname.R
 import com.codeplay.aintrealname.controller.fragments.DiseaseFragment
 import com.codeplay.aintrealname.utilities.Constants
 import kotlinx.android.synthetic.main.activity_add_prognosis.*
-import kotlinx.android.synthetic.main.fragment_user_details.*
 import okhttp3.Response
 import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.LocalTime
 
 class AddPrognosisActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.codeplay.aintrealname.controller
+package com.codeplay.aintrealname.controller.activities
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity

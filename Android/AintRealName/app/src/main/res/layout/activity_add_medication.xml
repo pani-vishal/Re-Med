@@ -1,165 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.MedicationActivity">
-
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/nameEditTextViewLayout"
+    tools:context=".controller.activities.MedicationActivity">
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6">
+        android:layout_height="match_parent">
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/newName"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/nameEditTextViewLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Disease Name"
-            android:inputType="textCapWords" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".20" />
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/newName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Medication Name"
+                android:inputType="textCapWords" />
+        </android.support.design.widget.TextInputLayout>
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.80" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Add New Medication"
-        android:textColor="@color/black"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:text="Quantity needed in :"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/nameEditTextViewLayout" />
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/first"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/textView8">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/morningName"
-            android:layout_width="match_parent"
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Morning"
-            android:inputType="numberDecimal"
-            android:text="0" />
-    </android.support.design.widget.TextInputLayout>
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".20" />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/second"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/first">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/afternoonName"
-            android:layout_width="match_parent"
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Afternoon"
-            android:inputType="numberDecimal"
-            android:text="0" />
-    </android.support.design.widget.TextInputLayout>
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.80" />
 
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/third"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/second">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/eveningName"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Evening"
-            android:inputType="numberDecimal"
-            android:text="0" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_marginTop="8dp"
+            android:text="Add New Medication"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/fourth"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/third">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/nightName"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Night"
-            android:inputType="numberDecimal"
-            android:text="0" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:text="Quantity needed in :"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toBottomOf="@+id/nameEditTextViewLayout" />
 
-    <Button
-        android:id="@+id/button2"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Add Medication"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/fourth"
-        app:layout_constraintVertical_bias="1.0" />
-</android.support.constraint.ConstraintLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/first"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toBottomOf="@+id/textView8">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/morningName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Morning"
+                android:inputType="numberDecimal"
+                android:text="0" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/second"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toBottomOf="@+id/first">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/afternoonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Afternoon"
+                android:inputType="numberDecimal"
+                android:text="0" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/third"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toBottomOf="@+id/second">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/eveningName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Evening"
+                android:inputType="numberDecimal"
+                android:text="0" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/fourth"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toBottomOf="@+id/third">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/nightName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Night"
+                android:inputType="numberDecimal"
+                android:text="0" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/button2"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Add Medication"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toBottomOf="@+id/fourth"
+            app:layout_constraintVertical_bias="1.0" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>

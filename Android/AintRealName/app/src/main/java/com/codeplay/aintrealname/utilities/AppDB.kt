@@ -27,7 +27,7 @@ class AppDB private constructor(context: Context) {
 
     fun putUserDetails(user: User) = userHash.put(1, user)
 
-    fun getUserDetails() : User = userHash.get(1)
+    fun getUserDetails() : User = userHash.getAllValues<User>().get(0)
 
     fun putAllDiseases(diseases: List<Disease>) = diseases.forEach {
         diseaseHash.put(it.id, it)

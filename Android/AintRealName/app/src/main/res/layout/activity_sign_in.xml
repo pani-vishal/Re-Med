@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.SignInActivity">
+    tools:context=".controller.activities.SignInActivity"
+    android:background="@color/gray_shade_1">
 
     <FrameLayout
         android:id="@+id/login_signup_fragment_holder"

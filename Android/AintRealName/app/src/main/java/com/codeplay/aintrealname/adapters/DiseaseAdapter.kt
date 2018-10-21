@@ -12,7 +12,7 @@ import com.codeplay.aintrealname.models.Disease
 
 class DiseaseAdapter(val context: Context, val itemClick:(Disease, View) -> Unit) : RecyclerView.Adapter<DiseaseAdapter.DiseaseViewHolder>() {
 
-    val mList = ArrayList<Disease>()
+    var mList = ArrayList<Disease>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiseaseViewHolder {
         val itemView = LayoutInflater.from(context).inflate(R.layout.list_disease_item, parent, false)
@@ -28,11 +28,16 @@ class DiseaseAdapter(val context: Context, val itemClick:(Disease, View) -> Unit
     }
 
     fun swapList(list: List<Disease>){
+
         mList.clear()
         mList.addAll(list)
         notifyDataSetChanged()
     }
 
+    fun clear(){
+        mList.clear()
+        notifyDataSetChanged()
+    }
     inner class DiseaseViewHolder(itemView: View, private val itemClick: (Disease, View) -> Unit) : RecyclerView.ViewHolder(itemView){
         val nameTextView = itemView.findViewById<TextView>(R.id.prescriptionNameTextView)
         val startDateTextView = itemView.findViewById<TextView>(R.id.startDateTextView)
