@@ -1,4 +1,4 @@
-package com.codeplay.aintrealname.controller
+package com.codeplay.aintrealname.controller.activities
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -10,7 +10,6 @@ import com.codeplay.aintrealname.utilities.AppDB
 import com.codeplay.aintrealname.utilities.Constants
 import com.codeplay.aintrealname.utilities.MyPreferences
 import com.codeplay.aintrealname.utilities.MyPreferences.get
-import com.codeplay.aintrealname.utilities.MyPreferences.set
 import com.codeplay.aintrealname.utilities.UserDetails
 
 class SplashActivity : AppCompatActivity() {
@@ -21,6 +20,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
 
         prefs = MyPreferences.customPrefs(this, Constants.MY_SHARED_PREFERENCE)
         userToken = prefs[Constants.KEY_TOKEN, Constants.TOKEN_DEFAULT]

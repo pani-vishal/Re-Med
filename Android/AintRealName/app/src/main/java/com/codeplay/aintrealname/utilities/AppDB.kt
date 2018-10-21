@@ -27,20 +27,22 @@ class AppDB private constructor(context: Context) {
 
     fun putUserDetails(user: User) = userHash.put(1, user)
 
-    fun getUserDetails() : User = userHash.get(1)
+    fun getUserDetails() : User = userHash.getAllValues<User>().get(0)
 
     fun putAllDiseases(diseases: List<Disease>) = diseases.forEach {
         diseaseHash.put(it.id, it)
     }
 
-    fun putPrescription(prescription: Perscription) = prescriptionHash.put("${prescription.pid}${prescription.diseaseId}", prescription)
+    fun putPrescription(prescription: Perscription) {
+        prescriptionHash.put("${prescription.pid}${prescription.diseaseId}", prescription)
+    }
 
-    fun getActivePrescription(type: Int, diseaseId: Int): List<Perscription> {
+    fun getActivePrescription(type: Int): List<Perscription> {
         return when (type) {
-            1 -> prescriptionHash.getAllValues<Perscription>().filter { it.diseaseId == diseaseId && it.morning > 0.0}
-            2 -> prescriptionHash.getAllValues<Perscription>().filter { it.diseaseId == diseaseId && it.afternoon > 0.0}
-            3 -> prescriptionHash.getAllValues<Perscription>().filter { it.diseaseId == diseaseId && it.evening > 0.0 }
-            else -> prescriptionHash.getAllValues<Perscription>().filter { it.diseaseId == diseaseId && it.evening > 0.0 }
+            1 -> prescriptionHash.getAllValues<Perscription>().filter { it.isActive == true && it.morning > 0.0}
+            2 -> prescriptionHash.getAllValues<Perscription>().filter { it.isActive == true && it.afternoon > 0.0}
+            3 -> prescriptionHash.getAllValues<Perscription>().filter { it.isActive == true && it.evening > 0.0 }
+            else -> prescriptionHash.getAllValues<Perscription>().filter { it.isActive == true && it.night > 0.0 }
         }
     }
 
@@ -50,6 +52,13 @@ class AppDB private constructor(context: Context) {
 
     fun getAllDiseases(): List<Disease> = diseaseHash.getAllValues<Disease>().sortedBy { it.startDate }
 
+
+    fun deleteAllData() {
+        waspDB.removeHash("prescription")
+        waspDB.removeHash("disease")
+        waspDB.removeHash("user")
+        waspDB.removeHash("medication")
+    }
 //    fun putAllMedication(medications: List<Medication>) = medications.forEach {
 //        medicationHash.put("${it.duration}${it.medicine_id}${it.disease_id}", it)
 //        Log.v("Data", "${it.duration}${it.medicine_id}${it.disease_id}")

@@ -3,6 +3,7 @@
     package="com.codeplay.aintrealname">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SEND_SMS"/>
 
     <application
         android:allowBackup="true"
@@ -12,19 +13,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".controller.SignInActivity"
+            android:name=".controller.activities.SignInActivity"
             android:screenOrientation="portrait"
             android:theme="@style/LoginSignupTheme"
-            android:windowSoftInputMode="adjustResize"></activity>
-        <activity android:name=".controller.SplashActivity">
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".controller.activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.HomeActivity" />
-        <activity android:name=".controller.PrescriptionDetailActivity"></activity>
+        <activity android:name=".controller.activities.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity android:name=".controller.activities.PrescriptionDetailActivity" />
+        <activity android:name=".controller.activities.AddPrognosisActivity" />
+        <activity android:name=".controller.activities.MedicationActivity"></activity>
     </application>
 
 </manifest>

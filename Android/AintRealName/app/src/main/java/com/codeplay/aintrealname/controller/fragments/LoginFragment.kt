@@ -19,7 +19,7 @@ import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
 
 import com.codeplay.aintrealname.R
-import com.codeplay.aintrealname.controller.SplashActivity
+import com.codeplay.aintrealname.controller.activities.SplashActivity
 import com.codeplay.aintrealname.models.User
 import com.codeplay.aintrealname.utilities.AppDB
 import com.codeplay.aintrealname.utilities.Constants
@@ -62,7 +62,7 @@ class LoginFragment : Fragment() {
 
         val progressDialog = ProgressDialog(context)
         progressDialog.isIndeterminate = true
-        progressDialog.setMessage("Creating Account...")
+        progressDialog.setMessage("Logging in...")
         progressDialog.setCanceledOnTouchOutside(false)
         progressDialog.show()
         prefs = MyPreferences.customPrefs(context!!, Constants.MY_SHARED_PREFERENCE)
