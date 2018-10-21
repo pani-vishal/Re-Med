@@ -19,6 +19,16 @@
 
   {% load static %}
   <link href="{% static 'homepage/assets/css/material-dashboard.css' %}" rel="stylesheet" />
+  1
+  <style>
+    #bar-chart{
+    width: 800px;
+    height: 350px;
+    font-family: Lato, Helvetica-Neue, monospace;
+    text-align: center;
+}
+
+  </style>
 </head>
 
 <body class="">
@@ -30,7 +40,7 @@
           Tip 2: you can also add an image using data-image tag
       -->
         <div class="logo">
-          <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+          <a href="#" class="simple-text logo-normal">
             Re:Med
           </a>
         </div>
@@ -89,15 +99,15 @@
         </div>
       </nav>
       <!-- End Navbar -->
-      <div class="content">
-        <div class="container-fluid">
+      <div class="content" style=" display: block">
+        <!-- <div class="container-fluid"> -->
           <!-- your content here -->
-          <div class="card" style="width: 90%; position: relative; left: 50%; transform: translateX(-50%);">
+          <!-- <div class="card" style="width: 90%; position: relative; left: 50%; transform: translateX(-50%);"> -->
             
-                <div class="ct-chart ct-golden-section"></div>
+                <div class="ct-chart ct-golden-section" id="bar-chart"></div>
             
-          </div>
-        </div>
+          <!-- </div> -->
+        <!-- </div> -->
       </div>
       <footer class="footer">
           <div class="container-fluid">
@@ -150,7 +160,8 @@
           console.log(data)
           var options = {
               width: 300,
-              height: 200
+              height: 400,
+              
             };
             new Chartist.Bar('.ct-chart', data, {
               distributeSeries: true

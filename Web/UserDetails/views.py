@@ -161,9 +161,11 @@ class AreaStatisticsView(APIView):
         data ={}
         if serializer.is_valid():
             people = Person.objects.filter(pincode = serializer.validated_data['pincode'])
+            print(people)
             map = dict()
             for person in people:
                 prognosisList = Prognosis.objects.filter(person = person)
+                print(prognosisList)
                 for p in prognosisList:
                     try:
                         map[p.disease.name] += 1
