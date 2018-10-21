@@ -93,7 +93,7 @@
           <div class="card" style="width: 70%; position: relative; left: 50%; transform: translateX(-50%);">
             <img class="img" src="{% static 'homepage/img/panda.jpg' %}" alt="Card image cap" style="width: 20%; position: relative; left: 50%; transform: translate(-50%, -20%); border-radius: 50%">
             <div class="card-body">
-                <h1 class="card-title text-center">Hello, Vishal!</h1>
+                <h1 class="card-title text-center">Hello, <span id = "hello-name">Vishal!</span></h1>
                 <hr style="border: 0; 
                           width: 70%;
                           height: 0;
@@ -119,6 +119,103 @@
       </footer>
     </div>
   </div>
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.9/dist/sweetalert2.all.min.js"></script>
+  <script>
+
+      var token = localStorage.getItem("token");
+      console.log(token);
+      if(token == null){
+        token = '';
+      }    
+        $.ajax({
+          url : "/user_details/",
+          type : 'get',
+          beforeSend : function(request){
+            request.setRequestHeader("Authorization",
+              "Token " + token);
+          },
+          dataType : 'json',
+          success: function(data){
+			
+			$('#hello-name').text(data['name']);
+            // window.location.href = "auth_forms/user/";
+          },
+          error: function(MLHttpRequest, textStatus, errorThrown){
+            if(phone.length != 10){
+              alert("Enter valid phone number");
+            }
+            else{
+              for(key in MLHttpRequest.responseJSON){
+                if(String(MLHttpRequest.responseJSON[key]) == "This value does not match the required pattern."){
+                  swal("Please enter correct FB link");
+                }
+                else{
+                  swal(String(MLHttpRequest.responseJSON[key]));
+                }
+              }
+            }
+            window.location.href = "/auth_forms/user_details/";
+          }
+        });
+	
+		
+
+		$("#updateProfile").on("click", function(e) {
+      var name = $("#name1").val();
+      var phone = $('#phone1').val();
+      var gender = $('#gender1').val();
+      var dob = $("#dob1").val();
+		var height = $("#height1").val();
+      var weight = $('#weight1').val();
+      var postalCode = $('#postalCode1').val();
+      var bloodGroup = $('#bloodGroup1').val();
+  
+      $.ajax({
+        url : "/user_details/",
+        type : 'put',
+        beforeSend : function(request){
+          request.setRequestHeader("Authorization",
+            "Token " + token);
+        },
+        data : {
+          "name": name, 
+          "phoneNumber" : phone,
+          "gender" : gender,
+          "dob" : dob,
+			"height" : height,
+          "weight" : weight,
+          "pincode" : postalCode,
+          "bloodGroup" : bloodGroup,
+        },
+        dataType : 'json',
+        success: function(data){
+			console.log("Then Done");
+          window.location.href = "/auth_forms/user/";
+        },
+        error: function(MLHttpRequest, textStatus, errorThrown){
+          if(phone.length != 10){
+						alert("Enter valid phone number");
+					}
+					else{
+						for(key in MLHttpRequest.responseJSON){
+							if(String(MLHttpRequest.responseJSON[key]) == "This value does not match the required pattern."){
+								swal("Please enter correct FB link");
+							}
+							else{
+								swal(String(MLHttpRequest.responseJSON[key]));
+							}
+						}
+					}
+					window.location.href = "/auth_forms/user_details/";
+        }
+      });
+    });
+    
+      
+    </script>  
 
   <!--   Core JS Files   -->
   <script src="{% static 'homepage/assets/js/core/jquery.min.js' %}" type="text/javascript"></script>

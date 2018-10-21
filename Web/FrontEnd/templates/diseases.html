@@ -179,8 +179,8 @@
                       <div class="row">
                           <div class="col-md-12">
                             <div class="form-group">
-                              <label class="bmd-label-floating" id="diseaseName">Disease Name</label>
-                              <input type="email" class="form-control">
+                              <label class="bmd-label-floating">Disease Name</label>
+                              <input type="email" class="form-control" id="diseaseName">
                             </div>
                           </div>
                         </div>
@@ -188,17 +188,17 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                  <label class="bmd-label-floating" id="startTime">Start Date</label>
-                                  <input type="text" class="form-control">
+                                  <label class="bmd-label-floating">Start Date</label>
+                                  <input type="text" class="form-control" id="startTime">
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <!-- <div class="col-md-6">
                                 <div class="form-group">
                                   <label class="bmd-label-floating" id="endTime">End Date</label>
                                   <input type="text" class="form-control">
                                 </div>
-                            </div>
+                            </div> -->
 
                             <!-- <div class="col-md-6">
                                 <div class="form-group">
@@ -352,7 +352,7 @@
               console.log(startTime);
           },
           data : {
-            'diseaseName': 'LOL', 
+            'diseaseName': diseaseName, 
             'startTime': startTime,
           },
           dataType : 'json',
