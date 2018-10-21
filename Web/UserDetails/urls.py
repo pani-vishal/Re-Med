@@ -10,4 +10,5 @@ urlpatterns = [
     path('prognosis_disease_add/', views.PrognosisDiseaseView.as_view(), name = 'prognosis_disease_add'),
     path('prognosis_medicine_add/', views.PrognosisPrescriptionView.as_view(), name = 'prognosis_medicine_add'),
     path('prognosis_list/', views.PrognosisDetailView.as_view(), name = 'prognosis_list'),
+    path('area_statistics/', views.AreaStatisticsView.as_view(), name = 'area_statistics'),
 ]

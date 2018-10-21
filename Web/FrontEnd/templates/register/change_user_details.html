@@ -80,11 +80,9 @@
 	
 									<div class="input-group">
 										<span class="input-group-addon">
-											<i class="material-icons">
-												school
-												</i>
+											<i class="material-icons">school</i>
 										</span>
-										<input type="text" placeholder="College..." class="form-control" id="college"/>
+										<input type="text" placeholder="example@domain.com" class="form-control" id="email"/>
 									</div>
 									
 									<div class="input-group">
@@ -111,15 +109,50 @@
 										<span class="input-group-addon">
 											<i class="material-icons">calendar_today</i>
 										</span>
-										<input type="text" placeholder="Birthday..." class="form-control" id="birthday"/>
+										<input type="text" placeholder="D.O.B..." class="form-control" id="dob"/>
 									</div>
 
 									<div class="input-group">
 											<span class="input-group-addon">
 												<i class="material-icons">perm_identity</i>
 											</span>
-											<input type="text" placeholder="Facebook ID - www.facebook.com/..." class="form-control" id="fb-id"/>
-										</div>
+											<input type="text" placeholder="Height..." class="form-control" id="height"/>
+									</div>
+
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">perm_identity</i>
+										</span>
+										<input type="text" placeholder="Weight..." class="form-control" id="weight"/>
+									</div>
+
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">perm_identity</i>
+										</span>
+										<input type="text" placeholder="Blood Group..." class="form-control" id="bloodGroup"/>
+									</div>
+
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">perm_identity</i>
+										</span>
+										<input type="text" placeholder="City..." class="form-control" id="city"/>
+									</div>	
+
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">perm_identity</i>
+										</span>
+										<input type="text" placeholder="Country..." class="form-control" id="country"/>
+									</div>	
+
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">perm_identity</i>
+										</span>
+										<input type="text" placeholder="Postal Code..." class="form-control" id="postalCode"/>
+									</div>	
 	
 								</div>
 								<div class="footer text-center">
@@ -168,7 +201,7 @@
     
     
       $.ajax({
-        url : "/user_detail/",
+        url : "/user_details/",
         type : 'get',
         beforeSend : function(request){
           request.setRequestHeader("Authorization",
@@ -189,7 +222,7 @@
     
     
       $.ajax({
-        url : "/api/regular_user/",
+        url : "/user_details/",
         type : 'get',
         beforeSend : function(request){
           request.setRequestHeader("Authorization",

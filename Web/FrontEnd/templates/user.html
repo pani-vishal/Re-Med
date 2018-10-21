@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	{% load static %}
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'homepage/assets/img/apple-icon.png' %}">
+  <link rel="icon" type="image/png" href="{% static 'homepage/assets/img/favicon.png' %}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Re:Med
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  {% load static %}
+  <link href="{% static 'homepage/assets/css/material-dashboard.css' %}" rel="stylesheet" />
+</head>
+
+<body class="">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="green" data-background-color="white" data-image="{% static 'homepage/img/sidebar-1.jpg' %}">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+      <div class="logo">
+        <a href="" class="simple-text logo-normal">
+			Re:Med
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+				<li class="nav-item">
+						<a class="nav-link" href="{% url 'dashboard' %}">
+						  <i class="material-icons">dashboard</i>
+						  <p>Dashboard</p>
+						</a>
+					  </li>
+					  <li class="nav-item active">
+						<a class="nav-link" href="{% url 'user' %}">
+						  <i class="material-icons">person</i>
+						  <p>User Profile</p>
+						</a>
+					  </li>
+		  
+					  <li class="nav-item">
+						  <a class="nav-link" href="{% url 'diseases' %}">
+							<i class="material-icons">list_alt</i>
+							<p>Diseases</p>
+						  </a>
+					  </li>
+		  
+					  <li class="nav-item ">
+						  <a class="nav-link" href="{% url 'stats' %}">
+							<i class="material-icons">list_alt</i>
+							<p>Statistics</p>
+						  </a>
+					  </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <a class="navbar-brand" href="#pablo">User Profile</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end">
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+              <div class="card card-profile" style="width: 70%; position: relative; left: 50%; transform: translateX(-50%);">
+                <div class="card-avatar">
+                  <a href="#pablo">
+                    <img class="img" src="{% static 'homepage/img/panda.jpg' %}" />
+                  </a>
+                </div>
+                <div class="card-body">
+                  <h2 class="card-title" id="name">Vishal Pani</h2>
+                  <ul class="list-group list-group-flush card-description">
+                      <table class="table">
+                          <thead>
+                              <tr>
+                                  <th>Gender</th>
+                                  <th id="gender">Male</th>
+                              </tr>
+
+                              <tr>
+                                  <th>D.O.B.</th>
+                                  <th id="dob">1998-06-05</th>
+                              </tr>
+
+                              <tr>
+                                  <th>Pin Code</th>
+                                  <th id="pincode">201301</th>
+                              </tr>
+
+                              <tr>
+                                  <th>Phone Number</th>
+                                  <th id="phoneNumber">9999999999</th>
+                              </tr>
+
+                              <tr>
+                                  <th>Height</th>
+                                  <th id="height">180</th>
+                              </tr>
+
+                              <tr>
+                                  <th>Weight</th>
+                                  <th id="weight">70</th>
+                              </tr>
+
+                              <tr>
+                                  <th>Blood Group</th>
+                                  <th id="bloodGroup">B+</th>
+                              </tr>
+                          </thead>
+                      </table>
+                    </ul>
+                  <a href="#" class="btn btn-success btn-round" data-toggle="modal" data-target="#exampleModal">Edit Profile</a>
+                </div>              
+              </div>
+          </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                      <div class="form-group">
+                                        <label class="bmd-label-floating">Name</label>
+                                        <input type="text" class="form-control" id="name1">
+                                      </div>
+									</div>
+                                    <div class="col-md-6">
+										<div class="form-group">
+										  <label class="bmd-label-floating">Phone Number</label>
+										  <input type="text" class="form-control" id="phoneNumber1">
+										</div>
+									  </div>
+                                  </div>
+
+                                  <div class="row">
+                                      <div class="col-md-4">
+                                          <div class="form-group">
+                                            <label class="bmd-label-floating">Gender</label>
+                                            <input type="text" class="form-control" id="gender1">
+                                          </div>
+                                      </div>
+
+                                      <div class="col-md-4">
+                                          <div class="form-group">
+                                            <label class="bmd-label-floating">D.O.B.</label>
+                                            <input type="text" class="form-control" id="dob1">
+                                          </div>
+									  </div>
+									  
+                                      <div class="col-md-4">
+										<div class="form-group">
+										  <label class="bmd-label-floating">Pin Code</label>
+										  <input type="text" class="form-control" id="pincode1">
+										</div>
+									</div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-md-4">
+                                      <div class="form-group">
+                                        <label class="bmd-label-floating">Height</label>
+                                        <input type="text" class="form-control" id="height1">
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <div class="form-group">
+                                        <label class="bmd-label-floating">Weight</label>
+                                        <input type="text" class="form-control" id="weight1">
+                                      </div>
+                                    </div>
+
+									<div class="col-md-4">
+											<div class="form-group">
+											  <label class="bmd-label-floating">Blood Group</label>
+											  <input type="text" class="form-control" id="bloodGroup1">
+											</div>
+										  </div>
+                                  </div>
+                                  <br>
+                                  <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal" id="updateProfile">Update Profile</button>
+                                  <button type="button" class="btn btn-secondary pull-right" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+              
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+	  <footer class="footer">
+			<div class="container-fluid">
+			  <div class="copyright float-right">
+				&copy;
+				<script>
+				  document.write(new Date().getFullYear())
+				</script>, made with <i class="material-icons">favorite</i> by
+				<a href="https://github.com/falconis/Re-Med" target="_blank"> Codeplay</a> for a<a href="https://prototypeiiita.github.io/" target="_blank"> Prototype</a>.
+			  </div>
+			</div>
+		  </footer>
+    </div>
+  </div>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.9/dist/sweetalert2.all.min.js"></script>
+  <script>
+
+      var token = localStorage.getItem("token");
+      console.log(token);
+      if(token == null){
+        token = '';
+      }    
+        $.ajax({
+          url : "/user_details/",
+          type : 'get',
+          beforeSend : function(request){
+            request.setRequestHeader("Authorization",
+              "Token " + token);
+          },
+          dataType : 'json',
+          success: function(data){
+            console.log(data['phoneNumber']);
+            $('#name').text(data['name']);
+            $('#phoneNumber').text(data['phoneNumber']);
+            $('#gender').text(data['gender']);
+            $('#dob').text(data['dob']);
+            $('#height').text(data['height']);
+            $('#weight').text(data['weight']);
+            $('#pincode').text(data['pincode']);
+			$('#bloodGroup').text(data['bloodGroup']);
+			
+			$('#name1').val(data['name']);
+            $('#phoneNumber1').val(data['phoneNumber']);
+            $('#gender1').val(data['gender']);
+            $('#dob1').val(data['dob']);
+            $('#height1').val(data['height']);
+            $('#weight1').val(data['weight']);
+            $('#pincode1').val(data['pincode']);
+            $('#bloodGroup1').val(data['bloodGroup']);
+            // window.location.href = "auth_forms/user/";
+          },
+          error: function(MLHttpRequest, textStatus, errorThrown){
+            if(phone.length != 10){
+              alert("Enter valid phone number");
+            }
+            else{
+              for(key in MLHttpRequest.responseJSON){
+                if(String(MLHttpRequest.responseJSON[key]) == "This value does not match the required pattern."){
+                  swal("Please enter correct FB link");
+                }
+                else{
+                  swal(String(MLHttpRequest.responseJSON[key]));
+                }
+              }
+            }
+            window.location.href = "/auth_forms/user_details/";
+          }
+        });
+	
+		
+
+		$("#updateProfile").on("click", function(e) {
+      var name = $("#name1").val();
+      var phone = $('#phone1').val();
+      var gender = $('#gender1').val();
+      var dob = $("#dob1").val();
+		var height = $("#height1").val();
+      var weight = $('#weight1').val();
+      var postalCode = $('#postalCode1').val();
+      var bloodGroup = $('#bloodGroup1').val();
+  
+      $.ajax({
+        url : "/user_details/",
+        type : 'put',
+        beforeSend : function(request){
+          request.setRequestHeader("Authorization",
+            "Token " + token);
+        },
+        data : {
+          "name": name, 
+          "phoneNumber" : phone,
+          "gender" : gender,
+          "dob" : dob,
+			"height" : height,
+          "weight" : weight,
+          "pincode" : postalCode,
+          "bloodGroup" : bloodGroup,
+        },
+        dataType : 'json',
+        success: function(data){
+			console.log("Then Done");
+          window.location.href = "/auth_forms/user/";
+        },
+        error: function(MLHttpRequest, textStatus, errorThrown){
+          if(phone.length != 10){
+						alert("Enter valid phone number");
+					}
+					else{
+						for(key in MLHttpRequest.responseJSON){
+							if(String(MLHttpRequest.responseJSON[key]) == "This value does not match the required pattern."){
+								swal("Please enter correct FB link");
+							}
+							else{
+								swal(String(MLHttpRequest.responseJSON[key]));
+							}
+						}
+					}
+					window.location.href = "/auth_forms/user_details/";
+        }
+      });
+    });
+    
+      
+    </script>  
+
+	<!--   Core JS Files   -->
+	<script src="{% static 'homepage/assets/js/core/jquery.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'homepage/assets/js/core/popper.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'homepage/assets/js/core/bootstrap-material-design.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'homepage/assets/js/plugins/perfect-scrollbar.jquery.min.js' %}"></script>
+	<!--  Google Maps Plugin    -->
+	<!-- <script src="{% static 'https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE' %}"></script> -->
+	<!-- Chartist JS -->
+	<script src="{% static 'homepage/assets/js/plugins/chartist.min.js' %}"></script>
+	<!--  Notifications Plugin    -->
+	<script src="{% static 'homepage/assets/bootstrap-notify.js' %}"></script>
+	<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+	<script src="{% static 'homepage/assets/js/material-dashboard.min.js?v=2.1.0' %}" type="text/javascript"></script>
+</body>
+
+</html>

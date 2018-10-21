@@ -65,13 +65,9 @@ class PrognosisDiseaseView(APIView):
         serializer = PrognosisDiseaseSerializer(data = request.data)
         if serializer.is_valid():
             person = Person.objects.get(user = request.user)
-            try:
-                diseaseQuery = Disease.objects.filter(name = serializer.validated_data['diseaseName'])
-            except diseaseQuery.DoesNotExist:
-                Disease.objects.create(name = serializer.validated_data['diseaseName'])
+            disease = Disease.objects.get_or_create(name = serializer.validated_data['diseaseName'])
             disease = Disease.objects.get(name = serializer.validated_data['diseaseName'])
             Prognosis.objects.create(person = person, startTime = serializer.validated_data['startTime'], disease = disease)
-            #prognosis.save()
             return Response(serializer.data, status = status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
@@ -83,11 +79,17 @@ class PrognosisPrescriptionView(APIView):
     def post(self, request, format = 'json'):
         serializer = PrognosisPrescriptionSerializer(data = request.data)
         if serializer.is_valid():
+            medicine = Medicine.objects.get_or_create(name = serializer.validated_data['medicineName'])
             medicine = Medicine.objects.get(name = serializer.validated_data['medicineName'])
             prognosis = Prognosis.objects.get(id = serializer.validated_data['prognosisID'])
-            prescription = Prescription.objects.create(medicine = medicine)
+            prescription = Prescription.objects.create(medicine = medicine,
+                morning = serializer.validated_data['morning'],
+                afternoon = serializer.validated_data['afternoon'],
+                evening = serializer.validated_data['evening'],
+                night = serializer.validated_data['night']
+            )
             prescription.save()
-            prognosis.prescriptions.add(prescription)
+            prognosis.prescription.add(prescription)
             prognosis.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
@@ -121,6 +123,10 @@ class PrognosisDetailView(ListAPIView):
                 new_temp_dict = {
                     'id' : pid,
                     'medicineName' : prescription.medicine.name,
+                    'morning' : prescription.morning,
+                    'afternoon' : prescription.afternoon,
+                    'evening' : prescription.evening,
+                    'night' : prescription.night
                 }
                 new_temp_list.append(new_temp_dict)
             new_dict['prescription'] = new_temp_list
@@ -131,4 +137,45 @@ class PrognosisDetailView(ListAPIView):
         # print(new_list)
             
         return Response(new_list)
+
+
+class PrescriptionDeleteView(APIView):
+    serializer_class = PrescriptionDeleteSerializer
+
+    def post(self, request, format = 'json'):
+        serializer = PrescriptionDeleteSerializer(data = request.data)
+        if serializer.is_valid():
+            print(serializer.validated_data['id'])
+            prescription = Prescription.objects.get(id = serializer.validated_data['id'])
+            prescription.delete()
+            return Response(serializer.data, status = status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
     
+class AreaStatisticsView(APIView):
+    serializer_class = AreaStatisticsSerializer
+
+    def post(self, request):
+        serializer = AreaStatisticsSerializer(data = request.data)
+        data ={}
+        if serializer.is_valid():
+            people = Person.objects.filter(pincode = serializer.validated_data['pincode'])
+            map = dict()
+            for person in people:
+                prognosisList = Prognosis.objects.filter(person = person)
+                for p in prognosisList:
+                    try:
+                        map[p.disease.name] += 1
+                    except:
+                        map.update({p.disease.name : 1})
+            labels = map.keys()
+            series = map.values()
+            data = {
+                'labels' : labels,
+                'series' : series
+            }
+            print(data)
+
+        return Response(data, status = status.HTTP_200_OK)
+
